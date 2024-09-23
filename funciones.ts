@@ -1,3 +1,93 @@
+//===========================================================================================================
+//===============================================================================================OBSOLETAS===
+//===========================================================================================================
+
+//--------------------------------------------------------------ADD FUNCION OBSOLETA---------------------------------
+export function addObsolete(...numbers: number[]): number {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  return sum;
+}
+
+//-----------------------------------------------------------TO UPPER FUNCTION OBSOLETA---------------------------
+export function toUpperObsoleta(...palabras: string[]) {
+  const result: string[] = [];
+  for (let i = 0; i < palabras.length; i++) {
+    result[i] = palabras[i].toUpperCase();
+  }
+  return result;
+}
+
+//------------------------------------------------------------INCREMENTO FUNCTION----------------------------
+export function incObsoleto(...numeros: number[]) {
+  const result: number[] = [];
+  for (let i = 0; i < numeros.length; i++) {
+    result[i] = numeros[i] + 1;
+  }
+  return result;
+}
+
+//----------------------------------------------------------DECREMENTO FUNCTION OBSOLETO----------------------------
+export function dec(...numeros: number[]) {
+  const result: number[] = [];
+  for (let i = 0; i < numeros.length; i++) {
+    result[i] = numeros[i] - 1;
+  }
+  return result;
+}
+
+//---------------------------------------------------------------CONTAR LENGHT VARIAS PALABRAS OBSOLETO----------------------
+export function variasPalabrasLenghObsoleto(...palabras: string[]) {
+  const result: number[] = [];
+  for (let i = 0; i < palabras.length; i++) {
+    result[i] = palabras[i].length;
+  }
+  return result;
+}
+
+//--------------------------------------------------------------------FUNCION TAKE OBSOLETO------------------------
+export function takeObsoleto(num: number, ...palabras: string[]) {
+  const result: string[] = [];
+  if (num <= 0) {
+    return result;
+  }
+  for (let i = 0; i < palabras.length; i++) {
+    result[i] = palabras[i].slice(0,num);
+  }
+  return result;
+}
+
+
+//-----------------------------------------------------------FUNCIÓN TAKE MAP (INCORRECTO)-------------------------------------
+export function partir(num:number, pal:string){
+  return pal.slice(0,num);
+}
+
+export function takeMap(num: number, ...palabras: string[]) {
+return map(partir,palabras );
+}
+
+//--------------------------------------------------------FUNCION INCREMENTO + LENGHT INTENTO DE MAP OBSOLETO--------------------------
+/*
+export function globoObsoleto(...datos: string[] | number[]) {
+  const result: number[] = [];
+  for (let i = 0; i < datos.length; i++) {
+    if (typeof datos[0] == "string") {
+      result[i] = datos[i].length;
+    } else {
+      result[i] = datos[i] + 1;
+    }
+  }
+  return result;
+}
+  */
+
+//============================================================================================================
+//===============================================================================================RECURSIVAS===
+//============================================================================================================
+
 //------------ADD FUNCION RECURSIVA-----------------------------------
 export function addRecursivo(...numbers: number[]): number {
   if (numbers.length == 0) {
@@ -6,24 +96,6 @@ export function addRecursivo(...numbers: number[]): number {
     const [head, ...tail] = numbers;
     return head + addRecursivo(...tail);
   }
-}
-
-//------------ADD FUNCION---------------------------------
-export function add(...numbers: number[]): number {
-  let sum = 0;
-  for (let i = 0; i < numbers.length; i++) {
-    sum += numbers[i];
-  }
-  return sum;
-}
-
-//----------TO UPPER FUNCTION---------------------------
-export function toUpper(...palabras: string[]) {
-  const result: string[] = [];
-  for (let i = 0; i < palabras.length; i++) {
-    result[i] = palabras[i].toUpperCase();
-  }
-  return result;
 }
 
 //----------TO UPPER FUNCTION RECURSIVE---------------------------
@@ -37,15 +109,6 @@ export function toUpperRecursive(...palabras: string[]) {
   }
 }
 
-//----------INCREMENTO FUNCTION----------------------------
-export function inc(...numeros: number[]) {
-  const result: number[] = [];
-  for (let i = 0; i < numeros.length; i++) {
-    result[i] = numeros[i] + 1;
-  }
-  return result;
-}
-
 //-------------INCREMENTO RECURSIVO-------------------------------
 //Recibe una lista de números y los incrementa en 1
 export function incRecursive(...numeros: number[]) {
@@ -56,59 +119,72 @@ export function incRecursive(...numeros: number[]) {
     const [head, ...tail] = numeros;
     return res.concat(head + 1).concat(incRecursive(...tail));
   }
-  return;
 }
 
-//----------DECREMENTO FUNCTION----------------------------
-export function dec(...numeros: number[]) {
-  const result: number[] = [];
-  for (let i = 0; i < numeros.length; i++) {
-    result[i] = numeros[i] - 1;
-  }
-  return result;
-}
 
-//--------------CONTAR LENGHT VARIAS PALABRAS----------------------
-export function variasPalabrasLengh(...palabras: string[]) {
-  const result: number[] = [];
-  for (let i = 0; i < palabras.length; i++) {
-    result[i] = palabras[i].length;
-  }
-  return result;
-}
 
-//----------------FUNCION TAKE------------------------
-export function take(num: number , ...palabras: string[]) {
-  const result: string[] = [];
-  if (num <= 0) {
-    return result;
-  }
-  for (let i = 0; i < palabras.length; i++) {
-    result[i] = palabras[i].slice(0, num);
-  }
-  return result;
-}
+//===============================================================================================================
+//===============================================================================================FUNCIONES MAP===
+//===============================================================================================================
 
-//--------------FUNCION INCREMENTO + LENGHT--------------------------
-export function globo(datos: string[] | number[]) {
-  const result: number[] = [];
-  for (let i = 0; i < datos.length; i++){
-    if(typeof(datos[0])=="string"){
-      result[i] = datos[i].length;
-    }
-    else{
-      result[i] = datos[i] + 1;
-    }
-    
-  }
-  return result;
-}
-
-export function map(f: (x:any) => any, xs: any){
-  const ys: any = [];
-  for (let i = 0; i < ys.length; i++) {
+//--------------------------------------------------------FUNCION MAP---------------------------------------
+export function map<X, Y>(f: (x: X) => Y, xs: X[]): Y[] {
+  const ys: Y[] = [];
+  for (let i = 0; i < xs.length; i++) {
     ys[i] = f(xs[i]);
   }
   return ys;
+}
 
+//--------------------------------------------------------------------FUNCION MAP RECURSIVO-----------------------
+export function mapRecursivo<X, Y>(f: (x: X) => Y, xs: X[]): Y[] {
+  if (xs.length == 0) {
+    return [];
+  } else {
+    const ys: Y[] = [];
+    const [head, ...tail] = xs;
+    return ys.concat(f(head)).concat(mapRecursivo(f, tail));
+  }
+}
+
+//===============================================================================================================
+//===============================================================================================FUNCIONES=======
+//===============================================================================================================
+
+//---------------------------------------------------------FUNCIÓN ODDS-----------------------------------------
+export function odds(...nums: number[]): number[] {
+  const result: number[] = [];
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] % 2 != 0) {
+      result.push(nums[i]);
+    }
+  }
+  return result;
+}
+
+//---------------------------------------------------------FUNCIÓN INTEGERS----------------------------------
+export function integers(...datos: string[]): string[] {
+  const result: string[] = [];
+  for (let i = 0; i < datos.length; i++) {
+    if (!isNaN(parseInt(datos[i]))) {
+      result.push(parseInt(datos[i]).toString());
+    }
+  }
+
+  return result;
+}
+
+//--------------------------------------------------------FUNCIÓN FILTRO + FILTRO ODD------------------------------------------
+export function filtroOdds(x:number):boolean{
+  return x % 2 != 0;
+}
+
+export function filtrar<X>(f: (x: X) => boolean, arr: X[]): X[]{
+  const result: X[] = [];
+for (let i = 0; i < arr.length; i++) {
+  if(f(arr[i])){
+    result.push(arr[i]);
+  }
+}
+return result;
 }
