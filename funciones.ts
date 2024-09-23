@@ -90,7 +90,7 @@ export function take(num: number , ...palabras: string[]) {
 }
 
 //--------------FUNCION INCREMENTO + LENGHT--------------------------
-export function globo(...datos: string[] | number[]) {
+export function globo(datos: string[] | number[]) {
   const result: number[] = [];
   for (let i = 0; i < datos.length; i++){
     if(typeof(datos[0])=="string"){
@@ -104,3 +104,11 @@ export function globo(...datos: string[] | number[]) {
   return result;
 }
 
+export function map(f: (x:any) => any, xs: any){
+  const ys: any = [];
+  for (let i = 0; i < ys.length; i++) {
+    ys[i] = f(xs[i]);
+  }
+  return ys;
+
+}
