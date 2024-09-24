@@ -60,13 +60,10 @@ export function takeObsoleto(num: number, ...palabras: string[]) {
 }
 
 
-//-----------------------------------------------------------FUNCIÓN TAKE MAP (INCORRECTO)-------------------------------------
-export function partir(num:number, pal:string){
-  return pal.slice(0,num);
-}
+//-----------------------------------------------------------FUNCIÓN TAKE MAP-----------------------------------------------------------
 
 export function takeMap(num: number, ...palabras: string[]) {
-return map(partir,palabras );
+return map((pal:string) => pal.slice(0,num),palabras );
 }
 
 //--------------------------------------------------------FUNCION INCREMENTO + LENGHT INTENTO DE MAP OBSOLETO--------------------------
