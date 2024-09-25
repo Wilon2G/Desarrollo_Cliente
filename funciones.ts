@@ -185,3 +185,12 @@ for (let i = 0; i < arr.length; i++) {
 }
 return result;
 }
+
+
+//-----------------------------------------------------------FUNCIÓN TAKE MAP CURRY-----------------------------------------------------------
+export const slicing= num => pal => pal.slice(0,num);
+
+export function takeMapCurry (num:number,pals:string[]){
+  return map(slicing(num),pals);
+} 
+
