@@ -208,8 +208,29 @@ export function curry<X,Y,Z>(f:(x: X, y: Y) => Z): (x:X) => (y:Y) => Z{
 }
 
 //-------------------------FUNCIÓN COMPOSE---------------------------
-export function compose<X,Y,Z>(f:(y:Y) => Z,g:(x:X)=>Y):(x:X) =>Z{
+export function compose<X,Y,Z>(f:(y:Y) => Z, g:(x:X)=>Y):(x:X) =>Z{
   return function (x:X){
     return f(g(x));
   };
+}
+
+//----------------------------------------------------------------COMPOSE PARA N FUNCIONES------------------
+export function composen<X,Y>(...fs:Array<(x:X)=>Y>):(x:X) =>Y{
+if (fs.length==1) {
+  return  fs[0];
+}
+  const [head, ...tail] = fs;
+
+  return function(x:X):Y {
+    const res=head(x);
+    const aunqueda=(composen(...tail));
+    return aunqueda(res);
+  };
+}
+
+
+export function pipe<X,Y,Z>(f:(y:Y) => X, g:(x:X)=>Z):(y:Y)=>Z{
+  return function (y:Y){
+    return g(f(y));
+  }
 }

@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { map,odds,integers,filtrar, curry, compose } from "../funciones";
+import { map,odds,integers,filtrar, curry, compose, composen } from "../funciones";
 
 //========================================================MAP FUNCTION===================
 test("Some values", () => {
@@ -70,3 +70,17 @@ test("odds", () => {
   });
 
 
+  test("Composen", () => {
+    function inc(x:number){
+      return x+1;
+    }
+    function double(x:number){
+      return x*2;
+    }
+    function plusTwo(x:number){
+      return x+2;
+    }
+    
+
+    expect(composen(double,inc,plusTwo)(8)).toEqual(19); //(8*2)+1+2
+  });
