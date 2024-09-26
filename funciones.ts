@@ -206,3 +206,10 @@ export function curry<X,Y,Z>(f:(x: X, y: Y) => Z): (x:X) => (y:Y) => Z{
     }
   }
 }
+
+//-------------------------FUNCIÓN COMPOSE---------------------------
+export function compose<X,Y,Z>(f:(y:Y) => Z,g:(x:X)=>Y):(x:X) =>Z{
+  return function (x:X){
+    return f(g(x));
+  };
+}
