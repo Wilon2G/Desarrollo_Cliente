@@ -194,3 +194,15 @@ export function takeMapCurry (num:number,pals:string[]){
   return map(slicing(num),pals);
 } 
 
+
+
+//-----------FUNCIÓN CURRY--------------------------------------
+//Dada una función de dos parámetros devuelve la función curry
+
+export function curry<X,Y,Z>(f:(x: X, y: Y) => Z): (x:X) => (y:Y) => Z{
+  return function(x:X){
+    return function(y:Y){
+      return f(x,y);
+    }
+  }
+}
