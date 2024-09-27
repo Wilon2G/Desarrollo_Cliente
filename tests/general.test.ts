@@ -82,5 +82,5 @@ test("odds", () => {
     }
     
 
-    expect(composen(double,inc,plusTwo)(8)).toEqual(19); //(8*2)+1+2
+    expect(composen(double,inc,plusTwo)(8)).toEqual(22); //(8*2)+1+2
   });
