@@ -247,3 +247,24 @@ export function pipe<X,Y,Z>(f:(y:Y) => X, g:(x:X)=>Z):(y:Y)=>Z{
   }
 }
 
+//---------------------------------------------------------------------FUNCION INITIALS---------------------------
+export function initials(...palabras:string[]):string{
+  return filtrar((s:string)=>s==s.slice(0,1).toUpperCase(),map((s:string) => s.slice(0,1),palabras)).join("")
+}
+
+
+
+
+//--------------------------------------------------------FUNCION REDUCE--------------------------------------------------------
+export function reduce<X,R,>(f:(acc:R, x:X)=>R ,init:R,xs:X[]):R{
+  let res=init;
+  for (let i= 0; i < xs.length; i++) {
+    res=f(res,xs[i]);
+  }
+  return res;
+}
+
+
+export function initialsRed(...palabras:string[]):string{
+  return reduce((acc:string,s:string)=>s.charAt(0).match('[A-Z]')?acc+s.slice(0,1):acc+"","",palabras)
+}

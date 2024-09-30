@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { map,odds,integers,filtrar, curry, compose, composen } from "../funciones";
+import { initialsRed,initials,map,odds,integers,filtrar, curry, compose, composen } from "../funciones";
 
 //========================================================MAP FUNCTION===================
 test("Some values", () => {
@@ -83,4 +83,12 @@ test("odds", () => {
     
 
     expect(composen(double,inc,plusTwo)(8)).toEqual(22); //(8*2)+1+2
+  });
+
+  test("initials", () => {
+    expect(initials("Hola","ho1a","Pepe","crlota")).toEqual("HP");
+  });
+
+  test("initialsRed", () => {
+    expect(initialsRed("Hola","ho1a","Pepe","crlota")).toEqual("HP");
   });
