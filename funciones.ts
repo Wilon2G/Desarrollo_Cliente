@@ -256,7 +256,7 @@ export function initials(...palabras:string[]):string{
 
 
 //--------------------------------------------------------FUNCION REDUCE--------------------------------------------------------
-export function reduce<X,R,>(f:(acc:R, x:X)=>R ,init:R,xs:X[]):R{
+export function reduce<X,R>(f:(acc:R, x:X)=>R ,init:R,xs:X[]):R{
   let res=init;
   for (let i= 0; i < xs.length; i++) {
     res=f(res,xs[i]);
@@ -265,6 +265,88 @@ export function reduce<X,R,>(f:(acc:R, x:X)=>R ,init:R,xs:X[]):R{
 }
 
 
+
+//---------------------------------------------------------------FUNCIÓN SACAR INICIALES CON REDUCE--------------------------
 export function initialsRed(...palabras:string[]):string{
   return reduce((acc:string,s:string)=>s.charAt(0).match('[A-Z]')?acc+s.slice(0,1):acc+"","",palabras)
 }
+
+//------------------------------------------FUNCIÓN REDUCE CON VALOR INICIAL OPCIONAL---------------------------------------------------------
+export function reduceIni<X,R>(f:(acc:R, x:X)=>R ,xs:X[],init?:R):R{
+  let res;
+  if (xs.length==0) {
+    throw new Error("Array vacío");
+    
+  }
+  if (init==undefined) {
+    res=xs[0];
+  }
+  else{
+    res=init;
+  }
+  for (let i= 0; i < xs.length; i++) {
+    res=f(res,xs[i]);
+  }
+  return res;
+}
+
+//------------------------------------------FUNCIÓN REDUCE CON VALOR INICIAL OPCIONAL E INDICE---------------------------------------------------------
+export function reduceIniIndex<X,R>(f:(acc:R, x:X)=>R ,xs:X[],index:number,init?:R):R{
+  let res;
+  if (xs.length==0) {
+    throw new Error("Array vacío");
+    
+  }
+  if (init==undefined) {
+    res=xs[index];
+  }
+  else{
+    res=init;
+  }
+  for (let i= 0; i < xs.length; i++) {
+    res=f(res,xs[i]);
+  }
+  return res;
+}
+
+
+//--------------------------------------------------------FUNCION REDUCE RECURSIVO--------------------------------------------------------
+export function reduceRecursive<X,R>(f:(acc:R, x:X)=>R ,init:R,xs:X[]):R{
+  if (xs.length==0) {
+    return init;
+  }
+  let res=init;
+  const [head, ...tail] = xs;
+  res=f(res,head);
+  return reduceRecursive(f,res,tail);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

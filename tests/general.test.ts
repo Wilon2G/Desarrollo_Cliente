@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { initialsRed,initials,map,odds,integers,filtrar, curry, compose, composen } from "../funciones";
+import { reduceIni,initialsRed,initials,map,odds,integers,filtrar, curry, compose, composen } from "../funciones";
 
 //========================================================MAP FUNCTION===================
 test("Some values", () => {
@@ -92,3 +92,52 @@ test("odds", () => {
   test("initialsRed", () => {
     expect(initialsRed("Hola","ho1a","Pepe","crlota")).toEqual("HP");
   });
+
+
+//===========================================================Sacar el valor máximo de un array con reduce y reduceRight====================
+  test("ReduceRight max value", () => {
+    expect([2,5,7,1,2,1,5,9,2,3,1,4].reduceRight((acc:number,n:number)=>acc<n?acc=n:acc)).toEqual(9);
+  });
+
+  test("Reduce max value", () => {
+    expect([2,5,7,1,2,1,5,9,2,3,1,4].reduce((acc:number,n:number)=>acc<n?acc=n:acc)).toEqual(9);
+  });
+
+
+
+//===========================================================Sacar el ÍNDICE DEL valor máximo de un array con reduce y reduceRight====================
+  test("Reduce max value index", () => {
+    expect([2,5,7,1,2,1,5,9,2,3,1,4].reduce((acc:number,n:number,index:number,arr:number[])=>{
+    return n>arr[acc]?index:acc;
+    },0)).toEqual(7);
+  });
+
+  test("ReduceRight max value index", () => {
+    expect([2,5,7,1,2,1,5,9,2,3,1,4].reduceRight((acc:number,n:number,index:number,arr:number[])=>{
+    return n>arr[acc]?index:acc;
+    },0)).toEqual(7);
+  });
+
+  
+
+//===========================================================Reduce con valor inicial opcional===============================
+  test("Reduce con ini opcional sin ini", () => {
+    expect(reduceIni((acc:number,n:number)=>acc<n?acc=n:acc,[2,5,7,1,2,1,5,9,2,3,1,4])).toEqual(9);
+  });
+
+  test("Reduce con ini opcional con ini", () => {
+    expect(reduceIni((acc:number,n:number)=>acc<n?acc=n:acc,[2,5,7,1,2,1,5,9,2,3,1,4],5)).toEqual(9);
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
