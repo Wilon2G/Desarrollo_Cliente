@@ -322,8 +322,16 @@ export function reduceRecursive<X,R>(f:(acc:R, x:X)=>R ,init:R,xs:X[]):R{
 }
 
 
-
-
+//-------------------------------------------------------FUNCION FACTORIAL RECURSIVE---------------------------------------------
+export function factorial(n:number):number{
+if (n==0) {
+  return 1;
+}
+if (n==1) {
+  return n;
+}
+return n*factorial(n-1);
+}
 
 
 

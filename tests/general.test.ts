@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { reduceIni,initialsRed,initials,map,odds,integers,filtrar, curry, compose, composen } from "../funciones";
+import { factorial,reduceIni,initialsRed,initials,map,odds,integers,filtrar, curry, compose, composen } from "../funciones";
 
 //========================================================MAP FUNCTION===================
 test("Some values", () => {
@@ -131,9 +131,11 @@ test("odds", () => {
 
 
 
+//=============================================================FUNCION FACTORIAL RECURSIVA====================
 
-
-
+test("factorial", () => {
+  expect(factorial(8)).toEqual(40320);
+});
 
 
 
