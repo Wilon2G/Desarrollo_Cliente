@@ -96,26 +96,35 @@ test("odds", () => {
 
 //===========================================================Sacar el valor máximo de un array con reduce y reduceRight====================
   test("ReduceRight max value", () => {
-    expect([2,5,7,1,2,1,5,9,2,3,1,4].reduceRight((acc:number,n:number)=>acc<n?acc=n:acc)).toEqual(9);
+    expect([2,5,7,1,2,1,5,9,2,3,1,4].reduceRight((acc:number,n:number)=>acc<n?n:acc)).toEqual(9);
   });
 
   test("Reduce max value", () => {
-    expect([2,5,7,1,2,1,5,9,2,3,1,4].reduce((acc:number,n:number)=>acc<n?acc=n:acc)).toEqual(9);
+    expect([2,5,7,1,2,1,5,9,2,3,1,4].reduce((acc:number,n:number)=>acc<n?n:acc)).toEqual(9);
   });
 
 
 
 //===========================================================Sacar el ÍNDICE DEL valor máximo de un array con reduce y reduceRight====================
   test("Reduce max value index", () => {
-    expect([2,5,7,1,2,1,5,9,2,3,1,4].reduce((acc:number,n:number,index:number,arr:number[])=>{
-    return n>arr[acc]?index:acc;
+    expect([2,5,7,1,2,1,5,9,2,3,1,4].reduce((maxindex:number,n:number,index:number,arr:number[])=>{
+    return n>arr[maxindex]?index:maxindex;
     },0)).toEqual(7);
   });
 
+/*
+if(n>arr[maxindex]){
+return index;
+}
+else{
+return maxindex;
+}
+*/
+
   test("ReduceRight max value index", () => {
-    expect([2,5,7,1,2,1,5,9,2,3,1,4].reduceRight((acc:number,n:number,index:number,arr:number[])=>{
-    return n>arr[acc]?index:acc;
-    },0)).toEqual(7);
+    expect([2,5,7,9,2,1,5,9,2,3,1,4].reduceRight((acc:number,n:number,index:number,arr:number[])=>{
+    return n>=arr[acc]?index:acc;
+    },0)).toEqual(3);
   });
 
   

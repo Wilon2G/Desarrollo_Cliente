@@ -274,7 +274,7 @@ export function initialsRed(...palabras:string[]):string{
 //------------------------------------------FUNCIÓN REDUCE CON VALOR INICIAL OPCIONAL---------------------------------------------------------
 export function reduceIni<X,R>(f:(acc:R, x:X)=>R ,xs:X[],init?:R):R{
   let res;
-  if (xs.length==0) {
+  if (xs.length==0 && init==undefined) {
     throw new Error("Array vacío");
     
   }
@@ -284,7 +284,8 @@ export function reduceIni<X,R>(f:(acc:R, x:X)=>R ,xs:X[],init?:R):R{
   else{
     res=init;
   }
-  for (let i= 0; i < xs.length; i++) {
+  let i=init==undefined?1:0;
+  for (; i < xs.length; i++) {
     res=f(res,xs[i]);
   }
   return res;
@@ -293,7 +294,7 @@ export function reduceIni<X,R>(f:(acc:R, x:X)=>R ,xs:X[],init?:R):R{
 //------------------------------------------FUNCIÓN REDUCE CON VALOR INICIAL OPCIONAL E INDICE---------------------------------------------------------
 export function reduceIniIndex<X,R>(f:(acc:R, x:X)=>R ,xs:X[],index:number,init?:R):R{
   let res;
-  if (xs.length==0) {
+  if (xs.length==0 && init==undefined) {
     throw new Error("Array vacío");
     
   }
@@ -303,11 +304,14 @@ export function reduceIniIndex<X,R>(f:(acc:R, x:X)=>R ,xs:X[],index:number,init?
   else{
     res=init;
   }
-  for (let i= 0; i < xs.length; i++) {
+  let i=init==undefined?1:0;
+  for (; i < xs.length; i++) {
     res=f(res,xs[i]);
   }
   return res;
 }
+
+
 
 
 //--------------------------------------------------------FUNCION REDUCE RECURSIVO--------------------------------------------------------
@@ -320,6 +324,17 @@ export function reduceRecursive<X,R>(f:(acc:R, x:X)=>R ,init:R,xs:X[]):R{
   res=f(res,head);
   return reduceRecursive(f,res,tail);
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 //-------------------------------------------------------FUNCION FACTORIAL RECURSIVE---------------------------------------------
